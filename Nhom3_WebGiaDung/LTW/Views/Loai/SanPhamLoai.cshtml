@@ -1,0 +1,83 @@
+﻿@*@model List<LTW.Models.SanPham>*@
+
+@model PagedList.IPagedList<LTW.Models.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "SanPhamLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<h2>@Html.DisplayFor(model => model.Loai.TenLoai)</h2>Te*@
+
+<script type="text/javascript">
+    function addToCart(id) {
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("ThemGioHang", "GioHang")",
+            data: { id: id },
+            success: function (result) {
+                getGioHangPartial();
+                if (result.success == true) {
+                    alert(result.message);
+                }
+            }
+        });
+    }
+</script>
+
+@* Product *@
+<div class="app__container">
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            <div class="col l-12 m-12 c-12">
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <!-- product item -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="col l-3 m-4 c-6">
+                                <a class="home-product-item">
+                                    <div onclick="window.location.href ='@Url.Action("Detail", "SanPham", new { id=item.MaSP })'" , class="home-product-item__img">
+                                        <img src="@Html.DisplayFor(modelItem => item.Hinh)" alt="Alternate Text" style="width:150px; height:150px" />
+                                    </div>
+                                    <h4 class="home-product-item__name">
+                                        @Html.DisplayFor(modelItem => item.TenSP)
+
+                                    </h4>
+                                    <div class="home-product-item__price">
+                                        <div class="home-product-item__price-body">
+                                            <strong class="home-product-item__price-old-2">
+                                                @Html.DisplayFor(modelItem => item.GiaSP) ₫
+                                            </strong>
+                                        </div>
+                                        <span class="DatMua">
+                                            <button type="button" class="btn btn-danger" style="text-decoration: none; outline: none; font-size: 12px; background-color: transparent; border: 1px solid transparent; border-color: #dc3545; font-family: inherit; color: #d43f3a; " onclick="addToCart(@item.MaSP)">Đặt mua</button>
+                                        </span>
+                                    </div>
+                                    <div class="home-product-item__favourite">
+                                        <i class="fa-solid fa-check"></i>
+                                        <span>Yêu thích</span>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+            <div>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+                @Model.PageCount
+            </div>
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("ListSanPham", new
+                {
+                    page = page
+                }))
+            </div>
+        </div>
+</div>

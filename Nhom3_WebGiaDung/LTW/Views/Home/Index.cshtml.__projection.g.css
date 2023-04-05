@@ -1,0 +1,35 @@
+/* BEGIN EXTERNAL SOURCE */
+div {
+display: flex; 
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+input {
+margin-left:10px;
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+li {
+padding-top: 8px
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+i {
+font-size: 20px; margin-left: 20px;
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+hr {
+margin: 8px  auto 0 auto 
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+img {
+width:150px; height:150px
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+button {
+text-decoration: none; outline: none; font-size: 12px; background-color: transparent; border: 1px solid transparent; border-color: #dc3545; font-family: inherit; color: #d43f3a; 
+}
+/* END EXTERNAL SOURCE */

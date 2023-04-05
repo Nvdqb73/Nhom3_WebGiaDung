@@ -1,0 +1,29 @@
+﻿.Cart {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+
+    .Cart h2 {
+        margin-bottom: 20px;
+    }
+
+    .Cart table {
+        width: 100%;
+    }
+
+        .Cart table thead tr th:first-child {
+            text-align: left;
+        }
+
+        .Cart table tr td {
+            border-bottom: 1px solid #ddd;
+            ;
+            padding: 12px 0;
+        }
+
+
+        .Cart table tbody tr th:first-child {
+            text-align: right;
+        }

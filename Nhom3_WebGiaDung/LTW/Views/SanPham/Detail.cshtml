@@ -1,0 +1,86 @@
+﻿@model LTW.Models.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .distance {
+        padding: 21px 0;
+    }
+
+    .sonly_size {
+        font-size: 35px;
+        font-weight: 400;
+    }
+</style>
+
+<main>
+    <div class="container">
+        <div class="x-box x-shadow summary">
+            <div class="row mx-0">
+                <div class="col l-6 m-0 c-0">
+                    <div class="carousel">
+                        <div class="wrapper x-shadow">
+                            <ul class="carousel__slides">
+                                <li class="carousel__slide">
+                                    <figure>
+                                        <div>
+                                            <img src=@Url.Content("~/" +  @Html.DisplayFor(model => model.Hinh)) alt="ảnh sản phẩm" style="width: 500px; height: 500px" />
+                                        </div>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-6 m-0 c-0">
+                    <h1 class="distance sonly_size">@Html.DisplayFor(model => model.TenSP)</h1>
+                    <span class="brand sonly distance">
+                        Thương hiệu:
+                        <a href="/thuong-hieu/oem/" title="">
+                            <strong>
+                                @Html.DisplayFor(model => model.NCC.TenNCC)
+                            </strong>
+                        </a>
+                    </span>
+                    <i class="fa fa-link"></i> </a>
+                    <hr class="my-1">
+                    <h2 class="sonly distance sonly_size">Mô Tả Ngắn</h2>
+                    <span class="sdes distance" style="font-size: 18px">@Html.DisplayFor(model => model.MoTa)</span>
+                    <div class="product-info distance" style="display: flex; margin-top: 18px; font-size: 20px">
+                        <div style="margin-right: 2px">
+                            <label>Giá Sản Phẩm</label>:
+                        </div>
+                        <span class="special-price">
+                            <span>@Html.DisplayFor(model => model.GiaSP) đ</span>
+                        </span>
+                    </div>
+                    <div class="distance">
+                        @Html.ActionLink("Quay Lại ", "ListSanPham","SanPham",  new {@class = "btn btn-info"})
+                    </div>
+                </div>
+
+                <div class="col l-11 m-0 c-0" style="margin: 20px 0 0 0">
+                    <h2 style="margin: 12px 0">Chi Tiết Sản Phẩm</h2>
+                    <table class="table table-hover table-striped" style="border: 1px solid #dee2e6 !important; ">
+                        <tbody>
+                            <tr>
+                                <th> Loại </th>
+                                <td class="breakall">@Html.DisplayFor(model => model.Loai.TenLoai)</td>
+                            </tr>
+                            <tr>
+                                <th> Thương hiệu </th>
+                                <td class="breakall">@Html.DisplayFor(model => model.NCC.TenNCC)</td>
+                            </tr>
+                            <tr>
+                                <th> Số lượng </th>
+                                <td class="breakall">@Html.DisplayFor(model => model.SoLuongTon)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

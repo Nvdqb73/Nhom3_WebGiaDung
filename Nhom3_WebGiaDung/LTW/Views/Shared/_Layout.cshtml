@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/grid.css" rel="stylesheet" />
+    <link href="~/Content/base.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />~/Areas/Admin/Content/styles.css
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body onload="getGioHangPartial();">
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" style=" display: flex; justify-content: space-between; align-items: center;">
+            <div style="justify-content: space-between; display: flex; width: 100%;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("SHOPGIADUNG", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Danh mục", "ListLoai", "Loai")</li>
+                        <li>@Html.ActionLink("Sản phẩm", "ListSanPham", "SanPham")</li>
+                        <li>@Html.ActionLink("Thương hiệu", "ListNhaCungCap", "NhaCungCap")</li>
+                        <li id="GioHangPartial"></li>
+                    </ul>
+                </div>
+
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Đăng Ký", "DangKy", "NguoiDung")</li>
+                        <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Website Gia Dụng</p>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        function getGioHangPartial() {
+            $.ajax({
+                type: 'GET',
+                url: "@Url.Action("GioHangPartial", "GioHang")",
+                success: function (result) {
+                    $("#GioHangPartial").html(result);
+                }
+            });
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/402a0eb5a6.js" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("upload", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LTW.Models.Loai>
+
+
+@{
+    ViewBag.Title = "ListLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("ListLoai", "Loai", FormMethod.Get, new { @class = "form-inline flex items-center", @style = "margin-top: 12px;" }))
+
+    {
+        <div class="form-group form-inline"  style="display: flex; justify-content: flex-end ; margin-right: 30px">
+            <input type="Text" class="form-control col-md-10" style="width: 40%" value="@ViewBag.Keyword"
+                   name="searchString" placeholder="Nhập tên cần tìm">
+            <input type="submit" class="btn btn-info" value="Tìm kiếm" style="margin-left:10px;">
+        </div>
+        <br>
+    }
+</div>
+
+<h2>Đồ gia dụng</h2>
+
+<div class="app__container">
+    <div class="grid wide">
+        <div class="row sm-gutter app__content">
+
+            @foreach (var item in Model)
+            {
+                <div class="col l-2-4 m-4 c-6">
+                    <div class="home-product-item">
+                        <span>
+                            <img src="@Html.DisplayFor(modelItem => item.Hinh)" alt="Alternate Text" style="width:150px; height:150px" onclick="window.location.href ='@Url.Action("SanPhamLoai", "Loai", new { @Id = item.MaLoai })'" />
+                        </span>
+                        <h3 class="home-product-item__name">
+                            @Html.ActionLink(item.TenLoai, "SanPhamLoai", "Loai", new { @Id = item.MaLoai }, new { @class = "category-item-link" })
+                        </h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+

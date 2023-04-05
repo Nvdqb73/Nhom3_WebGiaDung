@@ -1,0 +1,252 @@
+﻿@model LTW.Models.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    main {
+        display: block;
+    }
+    body {
+        margin: 0;
+        font-family: var(--bs-body-font-family);
+        font-size: var(--bs-body-font-size);
+        font-weight: var(--bs-body-font-weight);
+        line-height: var(--bs-body-line-height);
+        color: var(--bs-body-color);
+        text-align: var(--bs-body-text-align);
+        background-color: var(--bs-body-bg);
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        background-color: #f0f2f5;
+        -webkit-font-smoothing: antialiased;
+        overscroll-behavior-y: none;
+        font-size: 15px;
+        color: #012e42;
+        line-height: 24px;
+    }
+
+    body {
+        font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+
+    :root {
+        --bs-blue: #0d6efd;
+        --bs-indigo: #6610f2;
+        --bs-purple: #6f42c1;
+        --bs-pink: #d63384;
+        --bs-red: #dc3545;
+        --bs-orange: #fd7e14;
+        --bs-yellow: #ffc107;
+        --bs-green: #198754;
+        --bs-teal: #20c997;
+        --bs-cyan: #0dcaf0;
+        --bs-white: #fff;
+        --bs-gray: #6c757d;
+        --bs-gray-dark: #343a40;
+        --bs-gray-100: #f8f9fa;
+        --bs-gray-200: #e9ecef;
+        --bs-gray-300: #dee2e6;
+        --bs-gray-400: #ced4da;
+        --bs-gray-500: #adb5bd;
+        --bs-gray-600: #6c757d;
+        --bs-gray-700: #495057;
+        --bs-gray-800: #343a40;
+        --bs-gray-900: #212529;
+        --bs-primary: #0d6efd;
+        --bs-secondary: #6c757d;
+        --bs-success: #198754;
+        --bs-info: #0dcaf0;
+        --bs-warning: #ffc107;
+        --bs-danger: #dc3545;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --bs-primary-rgb: 13,110,253;
+        --bs-secondary-rgb: 108,117,125;
+        --bs-success-rgb: 25,135,84;
+        --bs-info-rgb: 13,202,240;
+        --bs-warning-rgb: 255,193,7;
+        --bs-danger-rgb: 220,53,69;
+        --bs-light-rgb: 248,249,250;
+        --bs-dark-rgb: 33,37,41;
+        --bs-white-rgb: 255,255,255;
+        --bs-black-rgb: 0,0,0;
+        --bs-body-color-rgb: 33,37,41;
+        --bs-body-bg-rgb: 255,255,255;
+        --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+        --bs-body-font-family: var(--bs-font-sans-serif);
+        --bs-body-font-size: 1rem;
+        --bs-body-font-weight: 400;
+        --bs-body-line-height: 1.5;
+        --bs-body-color: #212529;
+        Show All Properties (2 more)
+    }
+
+    :root {
+        --dcolor: #33415c;
+        --shadow-2: #00000033;
+        --border-color: #dfe7ef;
+        --link-color: #0d6efd;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+
+</style>
+<h2>Detail</h2>
+
+<div>
+    <h4>SanPham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </dt>
+
+        <dd>
+            <img src=@Url.Content("~/" +  @Html.DisplayFor(model => model.Hinh)) alt"" style="width:150px; height:150px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loai.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loai.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NCC.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCC.TenNCC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<main>
+    <div class="container">
+        <div class="x-box x-shadow summary">
+            <div class="row mx-0">
+                <div class="col-md-6 p-2 p-sm-3">
+                    <div class="carousel">
+                        <div class="wrapper x-shadow">
+                            <ul class="carousel__slides">
+                                <li class="carousel__slide">
+                                    <figure>
+                                        <div>
+                                            <img src=@Url.Content("~/" +  @Html.DisplayFor(model => model.Hinh)) alt"" style="width:150px; height:150px" />
+                                        </div>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 info p-2 p-sm-3">
+                    <h1> 1 Kg túi zip mặt trong mặt bạc đáy đứng 22x30cm </h1>
+                    <span class="brand sonly">
+                        Thương hiệu: <a href="/thuong-hieu/oem/" title="Thương hiệu OEM"><strong>OEM</strong></a>  | Xem thêm
+                        <a href="/tui-dung-thuc-pham-26092/?thuong-hieu=oem" title="Túi đựng thực phẩm OEM">
+                            <strong>Túi đựng thực phẩm&nbsp;OEM</strong>&nbsp;
+                            <i class="fa fa-link"></i>
+                        </a>
+                    </span>
+                    <i class="fa fa-link"></i> </a>
+                    <hr class="my-1">
+                    <h2 class="sonly">Mô tả ngắn</h2>
+                    <span class="sdes"> Cấu trúc vật liệu túi: PET/PE - PET/AL/PE chống thấm khí, chống thấm ẩm rất tốt. cấu trúc mặt trước PET/PE trong suốt cho phép thể hiện sản phẩm bên trong. Cấu trúc ghép nhôm mặt sau vừa tăng cường tố... </span>
+                    <div class="product-info">
+                        <div>
+                            <label>Giá mua ngay tại</label>: <a target="_blank" rel="nofollow" href="/mua-hang/t2597297"> Tiki.vn </a>
+                        </div>
+                        <div class="mt-2 coupon-undergo-t">
+                            <span id="cc"></span>
+                        </div>
+                        <span class="special-price">
+                            <span>115.000&nbsp;₫</span>
+                        </span>
+                    </div>
+                    <h2>Chi Tiết Sản Phẩm</h2>
+                    <table class="table table-hover table-striped border">
+                        <tbody>
+                            <tr>
+                                <th> Thương hiệu </th>
+                                <td class="breakall"> OEM </td>
+                            </tr>
+                            <tr>
+                                <th> Model </th>
+                                <td class="breakall"> MTMB </td>
+                            </tr>
+                            <tr>
+                                <th> Xuất xứ </th>
+                                <td class="breakall"> Việt Nam </td>
+                            </tr>
+                            <tr>
+                                <th> SKU </th>
+                                <td class="breakall"> t2594339 </td>
+                            </tr>
+                            <tr>
+                                <th> d </th>
+                                <td class="breakall"> 315 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

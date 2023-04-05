@@ -1,0 +1,84 @@
+﻿@model IEnumerable<LTW.Models.SanPham>
+
+@{
+    ViewBag.Title = "ListSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    th {
+        width: 200px;
+    }
+
+    .table-bordered {
+        text-align: center;
+    }
+</style>
+
+<h2>Quản Lý Sản Phẩm</h2>
+<hr />
+<p style="width: 300px;">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-warning" })
+</p>
+
+<table class="table-bordered">
+    <tr>
+        <th>
+            Tên Sản Phẩm
+        </th>
+        <th>
+            Hình Ảnh
+        </th>
+        <th>
+            Giá Sản Phẩm
+        </th>
+        <th>
+            Số Lượng Tồn
+        </th>
+        <th>
+            Mô Tả
+        </th>
+        <th>
+            Mã Loại
+        </th>
+        <th>
+           Nhà Cunng Cấp
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Hinh)" style="width: 120px" alt="Alternate Text" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NCC.TenNCC)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaSP })
+                @Html.ActionLink("Detail", "Detail", new { id = item.MaSP })
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+            </td>
+        </tr>
+    }
+
+</table>

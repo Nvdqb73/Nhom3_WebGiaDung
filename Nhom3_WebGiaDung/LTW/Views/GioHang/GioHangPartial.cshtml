@@ -1,0 +1,17 @@
+﻿<a class="navbar-link" href="@Url.Action("GioHang", "GioHang")" style="font-weight: bold; text-decoration: none; color: blueviolet">
+    Gio hang (<span id="totalCart"></span>)
+</a>
+
+<script type="text/javascript">
+    function layTongSoLuongSP() {
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("TongSoLuongSanPhamJson", "GioHang")",
+           
+            success: function (result) {
+                $("#totalCart").html(result.tsl);
+            }
+        });
+    }
+    layTongSoLuongSP();
+</script>

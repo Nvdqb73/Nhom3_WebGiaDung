@@ -1,0 +1,102 @@
+﻿:root {
+    --primary-color: #ee4d2d;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --star-gold-color: #ffce3d;
+    --header-heigth: 120px;
+    --navbar-height: 26px;
+    --header-with-search-height: calc(var(--header-heigth) - var( --navbar-height));
+    --header-sort-bar-height: 46px;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    /*1 rem 10px */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Responsvive */
+
+.grid__row {
+    /* Nhưng thẻ nằm trong class cùng nằm trong 1 hàng ngang */
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+
+/* Button style */
+
+.btn {
+    min-width: 65px ;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn .btn--normal:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn .btn--size-s {
+        height: 32px;
+        font-size: 1.2rem;
+        padding: 0 8px;
+    }
+
+    .btn .btn--primary {
+        color: var(--white-color);
+        background-color: var(--primary-color);
+    }
+
+    .btn.btn--disabled {
+        color: #949494;
+        cursor: default;
+        background-color: #c3c3c3;
+    }
+.btn.btn-danger:hover {
+    background-color: #d63342 !important;
+    color: #fff!important;
+}
+

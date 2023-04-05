@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LTW.Models.Loai>
+
+@{
+    ViewBag.Title = "ListLoai";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    th {
+        width: 200px;
+    }
+
+    .table-bordered {
+        text-align: center;
+    }
+</style>
+
+<h2>Quản Lý Loại Sản Phẩm</h2>
+<hr />
+
+<p style="width: 300px;">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-warning" })
+</p>
+<table class="table-bordered">
+    <tr>
+        <th>
+            Mã Loại
+        </th>
+        <th>
+            Tên Loại
+        </th>
+        <th>
+            Hình Ảnh
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoai)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Hinh)" alt="Alternate Text" style="width: 150px; height: 200px"/>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaLoai }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.MaLoai }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaLoai })
+            </td>
+        </tr>
+    }
+
+</table>

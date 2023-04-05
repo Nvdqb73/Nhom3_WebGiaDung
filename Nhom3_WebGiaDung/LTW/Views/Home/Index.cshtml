@@ -1,0 +1,125 @@
+﻿
+@model LTW.Models.HomeModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .category-item-link {
+        text-decoration: none !important;
+
+    }
+</style>
+
+<script type="text/javascript">
+    function addToCart(id) {
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("ThemGioHang", "GioHang")",
+            data: { id: id },
+            success: function (result) {
+                getGioHangPartial();
+                if (result.success == true) {
+                    alert(result.message);
+                }
+            }
+        });
+    }
+</script>
+
+<div>
+
+    @using (Html.BeginForm("ListSanPham", "SanPham", FormMethod.Get, new { @class = "form-inline flex items-center", @style = "margin-top: 12px;" }))
+    {
+    <div class="form-group form-inline" style="display: flex; justify-content: flex-end ; margin-right: 30px">
+        <input type="Text"  class="form-control col-md-10" style="width: 40%" value="@ViewBag.Keyword"
+               name="searchString" placeholder="Nhập tên cần tìm">
+        <input type="submit" class="btn btn-info" value="Tìm kiếm" style="margin-left:10px;">
+    </div>
+    <br>
+    }
+</div>
+@* Banner *@
+
+@*class="category-item-link"*@
+<div class="app__container">
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            <div class="col l-12 m-12 c-12">
+                <figure style="margin: 0 0 32px 32px">
+                    <a href="https://localhost:44333/Loai/ListLoai" target="_blank" title="Tiki Sale" rel="nofollow">
+                        <picture>
+                            <img src="https://cdn.giátốt.vn/tiki/1080x357.jpg" alt="Tiki Sale" loading="lazy" class="img-fluid ">
+                        </picture>
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Product *@
+<div class="app__container">
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            <div class="col l-3 m-0 c-0">
+                <nav class="category" style="margin-top: 9px">
+                    <a href="#">
+                        <img src="https://cf.shopee.vn/file/069a27646c56d988b75e229e9d29a037_tn" class="category__heading" alt="Danhmuc" loading="lazy">
+                    </a>
+                    <ul class="category-list">  
+                        <li class="category-item category-item--active" style="text-align: center">
+                            <a href="#" class="category-item-link_title">Danh Mục</a>
+                        </li>
+
+                        @foreach (var item in Model.listLoai)
+                        {
+                        <li class="category-item" style="padding: 3.4px 0">
+                            @Html.ActionLink(item.TenLoai, "SanPhamLoai", "Loai", new { @Id = item.MaLoai },  new { @class = "category-item-link" })
+                        </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col l-9 m-12 c-12">
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <!-- product item -->
+                        @foreach (var item in Model.listSP.Take(8))
+                        {
+                        <div class="col l-3 m-4 c-6">
+                            <a class="home-product-item">
+                                <div onclick="window.location.href ='@Url.Action("Detail", "SanPham", new { id=item.MaSP })'" , class="home-product-item__img">
+                                    <img src="@Html.DisplayFor(modelItem => item.Hinh)" alt="Alternate Text" style="width:150px; height:150px" />
+                                </div>
+                                <h4 class="home-product-item__name">
+                                    @Html.DisplayFor(modelItem => item.TenSP)
+                                </h4>
+                                <div class="home-product-item__price">
+                                    <div class="home-product-item__price-body">
+                                        <!-- Nếu muốn giá gạch chân màu đen thì thêm class home-product-item__price-old -->
+                                        <strong class="home-product-item__price-old-2">
+                                            @Html.DisplayFor(modelItem => item.GiaSP) ₫
+                                        </strong>
+                                    </div>
+                                    <span class="DatMua">
+                                        <button type="button" class="btn btn-danger" style="text-decoration: none; outline: none; font-size: 12px; background-color: transparent; border: 1px solid transparent; border-color: #dc3545; font-family: inherit; color: #d43f3a; " onclick="addToCart(@item.MaSP)">Đặt mua</button>
+                                    </span>
+                                </div>
+                                <div class="home-product-item__favourite">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Yêu thích</span>
+                                </div>
+                            </a>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
